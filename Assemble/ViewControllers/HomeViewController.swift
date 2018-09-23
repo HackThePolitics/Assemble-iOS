@@ -23,6 +23,8 @@ class HomeViewController: UIViewController {
 		title = "Assemble"
 		tableView.backgroundColor = .backgroundGray
 		
+		FirestoreManager.firestoreDB().collection("problems")
+		
 		problemCollection = LocalCollection<Problem>(
 			query: FirestoreManager.firestoreDB().collection("problems"),
 			updateHandler: { [weak self] changed in
@@ -41,6 +43,14 @@ class HomeViewController: UIViewController {
 		functionalTableData.tableView = tableView
 		view.addSubview(tableView)
 		tableView.constrainEdges(to: view)
+		
+//		let button = PolarisButton()
+//		button.setTitle("title", for: .normal)
+//		button.type = .secondary
+//		button.constrainWidth(100)
+//		view.addSubview(button)
+//		button.constrainCenterX(to: view)
+//		button.constrainCenterY(to: view)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -67,7 +77,7 @@ class HomeViewController: UIViewController {
 		
 		let localProblems = problemCollection.items.filter{ $0.level == "Municipal" }
 		if localProblems.count > 0 {
-			rows.append(headerCell(key: "local", title: "Top Local Issues"))
+			rows.append(headerCell(key: "local", title: "TOP ISSUES IN YOUR RIDING"))
 		}
 		for problem in localProblems {
 			rows += problemCells(problem)
@@ -75,11 +85,17 @@ class HomeViewController: UIViewController {
 		
 		let nonlocalProblems = problemCollection.items.filter{ $0.level != "Municipal" }
 		if nonlocalProblems.count > 0 {
-			rows.append(headerCell(key: "nonlocal", title: "Top Toronto Issues"))
+			rows.append(headerCell(key: "nonlocal", title: "TOP ISSUES IN TORONTO"))
 		}
 		for problem in nonlocalProblems {
 			rows += problemCells(problem)
 		}
+		
+		rows.append(headerCell(key: "riding header", title: "YOUR RIDING: TORONTO – DANFORTH"))
+
+		rows.append(ImageHeaderCell(key: "federalRep", state: ImageHeaderState(image: #imageLiteral(resourceName: "headshots"))))
+//		rows.append(ImageHeaderCell(key: "proRep", state: ImageHeaderState(image: #imageLiteral(resourceName: "headshotprovincial"))))
+//		rows.append(ImageHeaderCell(key: "cityRep", state: ImageHeaderState(image: #imageLiteral(resourceName: "headshopmunicipal"))))
 		
 		return [TableSection(key: "table", rows: rows)]
 	}
@@ -95,7 +111,7 @@ class HomeViewController: UIViewController {
 		var rows = [CellConfigType]()
 
 		let titleControlText = ControlText(text: problem.title,
-										   font: UIFont.boldSystemFont(ofSize: 18))
+										   font: UIFont.boldSystemFont(ofSize: 16))
 		let state = HomeProblemState(titleText: [titleControlText],
 									 squareImageUrl: problem.bannerImageUrl)
 		

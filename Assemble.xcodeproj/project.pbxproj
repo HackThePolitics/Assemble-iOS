@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7B30B5C9FF29F95844626635 /* Pods_Assemble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9EC583DE16DF0C7F51A7953 /* Pods_Assemble.framework */; };
+		9B227933215788A6004907DD /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B227932215788A6004907DD /* ImageCell.swift */; };
+		9B22793521579125004907DD /* ProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22793421579125004907DD /* ProblemViewController.swift */; };
+		9B22793821579235004907DD /* PolarisButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22793721579235004907DD /* PolarisButton.swift */; };
 		9B44034A21574DEE0006C25E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44034921574DEE0006C25E /* HomeViewController.swift */; };
 		9B44034C2157534E0006C25E /* ControlText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44034B2157534E0006C25E /* ControlText.swift */; };
 		9B44034E215762600006C25E /* TitleHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44034D215762600006C25E /* TitleHeaderCell.swift */; };
@@ -54,6 +57,9 @@
 
 /* Begin PBXFileReference section */
 		866FEAF0AC8E69201E29F7CA /* Pods-Assemble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assemble.release.xcconfig"; path = "Pods/Target Support Files/Pods-Assemble/Pods-Assemble.release.xcconfig"; sourceTree = "<group>"; };
+		9B227932215788A6004907DD /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		9B22793421579125004907DD /* ProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemViewController.swift; sourceTree = "<group>"; };
+		9B22793721579235004907DD /* PolarisButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarisButton.swift; sourceTree = "<group>"; };
 		9B44034921574DEE0006C25E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9B44034B2157534E0006C25E /* ControlText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlText.swift; sourceTree = "<group>"; };
 		9B44034D215762600006C25E /* TitleHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderCell.swift; sourceTree = "<group>"; };
@@ -120,6 +126,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9B22793621579179004907DD /* UIControls */ = {
+			isa = PBXGroup;
+			children = (
+				9B22793721579235004907DD /* PolarisButton.swift */,
+			);
+			path = UIControls;
+			sourceTree = "<group>";
+		};
 		9B5D740D2157429F00EC7534 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +168,7 @@
 		9B9D18BF215712D100A5B56E /* Assemble */ = {
 			isa = PBXGroup;
 			children = (
+				9B22793621579179004907DD /* UIControls */,
 				9B5D740D2157429F00EC7534 /* Models */,
 				9B9D18FE215734CA00A5B56E /* FTD Host Cells */,
 				9B9D18F32157161200A5B56E /* Network */,
@@ -203,9 +218,10 @@
 			isa = PBXGroup;
 			children = (
 				9B9D18F12157156F00A5B56E /* AssemblyNavigationController.swift */,
-				9B9D1914215740EA00A5B56E /* SampleViewController.swift */,
 				9B44034921574DEE0006C25E /* HomeViewController.swift */,
 				9B440351215768520006C25E /* AddDataViewController.swift */,
+				9B9D1914215740EA00A5B56E /* SampleViewController.swift */,
+				9B22793421579125004907DD /* ProblemViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -239,12 +255,13 @@
 		9B9D18FE215734CA00A5B56E /* FTD Host Cells */ = {
 			isa = PBXGroup;
 			children = (
+				9B9D18FF2157355300A5B56E /* FTDCellFactory.swift */,
+				9B9D19012157357300A5B56E /* SpacerCell.swift */,
 				9B9D190E215737B500A5B56E /* HomeProblemCell.swift */,
 				9B9D190B2157375C00A5B56E /* SampleNibCell.swift */,
 				9B9D190A2157375C00A5B56E /* SampleNibView.xib */,
-				9B9D18FF2157355300A5B56E /* FTDCellFactory.swift */,
-				9B9D19012157357300A5B56E /* SpacerCell.swift */,
 				9B44034D215762600006C25E /* TitleHeaderCell.swift */,
+				9B227932215788A6004907DD /* ImageCell.swift */,
 			);
 			path = "FTD Host Cells";
 			sourceTree = "<group>";
@@ -484,8 +501,10 @@
 				9B9D18F82157176100A5B56E /* Restaurant.swift in Sources */,
 				9B5D740F215742AC00EC7534 /* Problem.swift in Sources */,
 				9B9D190D2157375C00A5B56E /* SampleNibCell.swift in Sources */,
+				9B227933215788A6004907DD /* ImageCell.swift in Sources */,
 				9B9D1910215737B500A5B56E /* HomeProblemCell.swift in Sources */,
 				9B5D741521574A1F00EC7534 /* Solution.swift in Sources */,
+				9B22793521579125004907DD /* ProblemViewController.swift in Sources */,
 				9B5D74112157463200EC7534 /* ContextLogger.swift in Sources */,
 				9B9D1905215735C400A5B56E /* Constrainable.swift in Sources */,
 				9B9D18C1215712D100A5B56E /* AppDelegate.swift in Sources */,
@@ -499,6 +518,7 @@
 				9B9D18F0215714D200A5B56E /* UIColor+Extension.swift in Sources */,
 				9B9D18FD2157254C00A5B56E /* FirestoreManagerSample+TestSaves.swift in Sources */,
 				9B9D19022157357300A5B56E /* SpacerCell.swift in Sources */,
+				9B22793821579235004907DD /* PolarisButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

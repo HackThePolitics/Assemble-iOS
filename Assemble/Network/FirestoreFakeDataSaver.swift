@@ -18,13 +18,36 @@ struct FirestoreFakeDataSaver {
 			squareImageUrl: "https://s3.amazonaws.com/assemble-assets/Problem_gunviolence_square.jpg",
 			followers: 98902,
 			owner: "Paige Sun",
-			created: "18 days ago")
-		saveProblem(problem)
+			created: "28 days ago")
+		
+		let problemId = saveProblem(problem, successCompletion: {
+		})
+		
+		saveBorderSolution(problemId: problemId)
+	}
+	
+	private static func saveBorderSolution(problemId: String) {
+		let borderSolution = Solution(
+			id: nil,
+			problemId: problemId,
+			title: "Incraese border security",
+			description: "Gun violence is on the rise in toronto",
+			level: GovernmentLevel.provincial.displayString,
+			bannerImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_bordersecurity_banner.jpg",
+			squareImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_bordersecurity_square.jpg",
+			upvotes: 1274,
+			followers: 281,
+			owner: "Jie Lin",
+			created: "20 days ago")
+		
+		saveSolution(borderSolution, successCompletion: {
+			
+		})
 	}
 	
 	static func storeMotoristsProblem() {
 		let problem = Problem(
-			id: nil,
+			id: "motorisId",
 			title: "Cyclists accidents by motorists",
 			level: GovernmentLevel.municipal.displayString,
 			bannerImageUrl: "https://s3.amazonaws.com/assemble-assets/Problem_cycling_banner.jpg",
@@ -90,7 +113,7 @@ struct FirestoreFakeDataSaver {
 	static func storePollutionsProblem() {
 		let problem = Problem(
 			id: nil,
-			title: "Foam populution seen on Mondays and Wednesdays near the river",
+			title: "Foam pollution seen on Mondays near the river",
 			level: GovernmentLevel.provincial.displayString,
 			bannerImageUrl: "https://s3.amazonaws.com/assemble-assets/Problem_pollution_square.jpg",
 			squareImageUrl: "https://s3.amazonaws.com/assemble-assets/Problem_pollution_square.jpg",
@@ -100,16 +123,30 @@ struct FirestoreFakeDataSaver {
 		saveProblem(problem)
 	}
 	
-	
-	private static func saveProblem(_ problem: Problem) {
+	private static func saveProblem(_ problem: Problem,
+									successCompletion: (() -> Void)? = nil) -> String {
 		let collection = FirestoreManager.firestoreDB().collection("problems")
-		collection.addDocument(data: problem.dictionary) { (error) in
+		return collection.addDocument(data: problem.dictionary, completion: { error in
 			if let error = error {
 				ContextLogger.logServerError("Couldn't add document with name \(problem.title), \(error)")
 			}
 			
 			ContextLogger.logSuccess("Saved \(problem.title)!")
-		}
+			successCompletion?()
+		}).documentID
+	}
+	
+	private static func saveSolution(_ solution: Solution,
+									 successCompletion: (() -> Void)? = nil) {
+		let collection = FirestoreManager.firestoreDB().collection("solutions")
+		collection.addDocument(data: solution.dictionary, completion: { error in
+			if let error = error {
+				ContextLogger.logServerError("Couldn't add document with name \(solution.title), \(error)")
+			}
+			
+			ContextLogger.logSuccess("Saved \(solution.title)!")
+			successCompletion?()
+		})
 	}
 }
 

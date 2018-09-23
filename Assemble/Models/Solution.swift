@@ -10,13 +10,32 @@ import Foundation
 
 struct Solution {
 	
-	var title: String
-	var level: String
+	let id: String?
+	let problemId: String
+	let title: String
+	let description: String
+	let level: String
+	let bannerImageUrl: String
+	let squareImageUrl: String
+	
+	let upvotes: Int
+	let followers: Int
+	let owner: String
+	let created: String
 	
 	var dictionary: [String: Any] {
 		return [
+			"problemId": problemId,
 			"title": title,
-			"level": level
+			"description": description,
+			"level": level,
+			"bannerImageUrl": bannerImageUrl,
+			"squareImageUrl": squareImageUrl,
+			
+			"upvotes": upvotes,
+			"followers": followers,
+			"owner": owner,
+			"created": created
 		]
 	}
 }
@@ -24,10 +43,30 @@ struct Solution {
 extension Solution: DocumentSerializable {
 	init?(id: String, dictionary: [String : Any]) {
 		guard let title = dictionary["title"] as? String,
-			let level = dictionary["level"] as? String else { return nil }
+			let problemId = dictionary["problemId"] as? String,
+			let description = dictionary["description"] as? String,
+			let level = dictionary["level"] as? String,
+			let bannerImageUrl = dictionary["bannerImageUrl"] as? String,
+			let squareImageUrl = dictionary["squareImageUrl"] as? String,
+
+			let upvotes = dictionary["upvotes"] as? Int,
+			let followers = dictionary["followers"] as? Int,
+			let owner = dictionary["owner"] as? String,
+			let created = dictionary["created"] as? String else {
+				return nil
+		}
 		
-		self.init(title: title,
-				  level: level)
+		self.init(id: id,
+				  problemId: problemId,
+				  title: title,
+				  description: description,
+				  level: level,
+				  bannerImageUrl: bannerImageUrl,
+				  squareImageUrl: squareImageUrl,
+				  upvotes: upvotes,
+				  followers: followers,
+				  owner: owner,
+				  created: created)
 	}
 	
 }

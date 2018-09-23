@@ -22,7 +22,13 @@ class HomeProblemView: UIView {
 		imageView1.constrainHeight(90)
 
 		backgroundColor = .white
-		
+
+		layer.masksToBounds = false
+		layer.shadowColor = UIColor.black.cgColor
+		layer.shadowOpacity = 0.4
+		layer.shadowOffset = CGSize(width: 2, height: 2)
+		layer.shadowRadius = 2
+
 		let stack = mainVerticalStack()
 		stack.spacing = 10
 		addSubview(stack)
