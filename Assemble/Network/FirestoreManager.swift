@@ -36,26 +36,7 @@ class FirestoreManager {
 		}
 	}
 	
-	static func storeGunProblem() {
-		
-		let gunProblem = Problem(
-			id: nil,
-			title: "Gun violence is on the rise in toronto",
-			level: GovernmentLevel.provincial.displayString,
-			bannerImageUrl: "https://s3.amazonaws.com/assemble-assets/gun_violence.png",
-			squareImageUrl: "https://s3.amazonaws.com/assemble-assets/gun_violence.png")
-		
-		let collection = firestoreDB().collection("problems")
-		collection.addDocument(data: gunProblem.dictionary)
-		
-		collection.addDocument(data: gunProblem.dictionary) { (error) in
-			if let error = error {
-				ContextLogger.logServerError("Couldn't add document \(error)")
-			}
-			
-			ContextLogger.logSuccess("Saved gun problem!")
-		}
-	}
+
 
 //	static func saveRestaurant() {
 //		let collection = firestoreDB().collection("testrestaurants")

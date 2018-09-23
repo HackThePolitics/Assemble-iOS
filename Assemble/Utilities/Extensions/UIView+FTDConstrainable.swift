@@ -11,9 +11,9 @@ import UIKit
 
 extension UIView {
 	
-	func constrainEdgesToFTDView(_ otherView: UIView) {
-		constrainTop(to: otherView)
+	func constrainEdgesToFTDView(_ otherView: UIView, topInset: CGFloat = 0, bottomInset: CGFloat = 0) {
+		constrainTop(to: otherView, offset: topInset)
 		constrainEdgesHorizontally(to: otherView)
-		constrainBottom(to: otherView, priority: UILayoutPriority.init(999))
+		constrainBottom(to: otherView, offset: -bottomInset, priority: UILayoutPriority.init(999))
 	}
 }

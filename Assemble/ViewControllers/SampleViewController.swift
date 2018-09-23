@@ -21,6 +21,8 @@ class SampleViewController: UIViewController {
 		functionalTableData.tableView = tableView
 		view.addSubview(tableView)
 		tableView.constrainEdges(to: view)
+		
+		render()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

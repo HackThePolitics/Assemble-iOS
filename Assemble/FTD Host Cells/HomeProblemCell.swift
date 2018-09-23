@@ -8,27 +8,25 @@
 import SwiftyTables
 import SDWebImage
 
-typealias HomeProblemCell = HostCell<HomeProblemView, HomeProblemState, LayoutMarginsTableItemLayout>
+typealias HomeProblemCell = HostCell<HomeProblemView, HomeProblemState, AssembleMarginsTableItemLayout>
 
 class HomeProblemView: UIView {
 	fileprivate let imageView1 = UIImageView()
 	fileprivate let titleLabel1 = UILabel()
-//
-//	private let imageView2 = UIImageView()
-//	private let textBox2 = UILabel()
-//
+
 	init() {
 		super.init(frame: .zero)
-		
-		backgroundColor = .green
 		
 		imageView1.clipsToBounds = true
 		imageView1.contentMode = .scaleAspectFill
 		imageView1.constrainHeight(90)
+
+		backgroundColor = .white
 		
 		let stack = mainVerticalStack()
+		stack.spacing = 10
 		addSubview(stack)
-		stack.constrainEdgesToFTDView(self)
+		stack.constrainEdgesToFTDView(self, topInset: 0, bottomInset: 8)
 	}
 	
 	private func mainVerticalStack() -> UIStackView {
@@ -36,6 +34,8 @@ class HomeProblemView: UIView {
 		stack.axis = .vertical
 		
 		stack.addArrangedSubview(imageView1)
+		
+		titleLabel1.numberOfLines = 0
 		stack.addArrangedSubview(titleLabel1)
 		
 		return stack
@@ -53,7 +53,6 @@ class HomeProblemView: UIView {
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
 }
 
 struct HomeProblemState {

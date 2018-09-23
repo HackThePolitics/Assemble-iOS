@@ -11,17 +11,25 @@ import Foundation
 struct Problem {
 	
 	let id: String?
-	var title: String
-	var level: String
-	var bannerImageUrl: String
-	var squareImageUrl: String
+	let title: String
+	let level: String
+	let bannerImageUrl: String
+	let squareImageUrl: String
+	
+	let followers: Int
+	let owner: String
+	let created: String
 
 	var dictionary: [String: Any] {
 		return [
 			"title": title,
 			"level": level,
 			"bannerImageUrl": bannerImageUrl,
-			"squareImageUrl": squareImageUrl
+			"squareImageUrl": squareImageUrl,
+
+			"followers": followers,
+			"owner": owner,
+			"created": created
 		]
 	}
 }
@@ -31,7 +39,11 @@ extension Problem: DocumentSerializable {
 		guard let title = dictionary["title"] as? String,
 			let level = dictionary["level"] as? String,
 			let bannerImageUrl = dictionary["bannerImageUrl"] as? String,
-			let squareImageUrl = dictionary["squareImageUrl"] as? String else {
+			let squareImageUrl = dictionary["squareImageUrl"] as? String,
+			
+			let followers = dictionary["followers"] as? Int,
+			let owner = dictionary["owner"] as? String,
+			let created = dictionary["created"] as? String else {
 				return nil
 		}
 		
@@ -39,6 +51,9 @@ extension Problem: DocumentSerializable {
 				  title: title,
 				  level: level,
 				  bannerImageUrl: bannerImageUrl,
-				  squareImageUrl: squareImageUrl)
+				  squareImageUrl: squareImageUrl,
+				  followers: followers,
+				  owner: owner,
+				  created: created)
 	}
 }

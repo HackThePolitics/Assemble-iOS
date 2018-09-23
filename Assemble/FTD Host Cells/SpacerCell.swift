@@ -17,7 +17,8 @@ class SpacerView: UIView {
 	init() {
 		super.init(frame: CGRect.zero)
 		
-//		heightConstraint = constrainHeight(0, priority: .defaultHigh)
+		backgroundColor = .clear
+		heightConstraint = constrainHeight(0, priority: .defaultHigh)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
