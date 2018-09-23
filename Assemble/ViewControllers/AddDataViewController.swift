@@ -36,31 +36,31 @@ class AddDataViewController: UIViewController {
 		
 		rows.append(normalTextCell(key: "add gun problem", title: "gun", selectionAction: {
 			print("***********")
-			FirestoreFakeDataSaver.storeGunProblem()
+			FirestoreSampleDataSaver.storeGunProblem()
 		}))
 		
 		rows.append(normalTextCell(key: "add motorists problem", title: "motorists", selectionAction: {
-			FirestoreFakeDataSaver.storeMotoristsProblem()
+			FirestoreSampleDataSaver.storeMotoristsProblem()
 		}))
 		
 		rows.append(normalTextCell(key: "store homeless problem", title: "homelessness", selectionAction: {
-			FirestoreFakeDataSaver.storeHomelessProblem()
+			FirestoreSampleDataSaver.storeHomelessProblem()
 		}))
 		
 		rows.append(normalTextCell(key: "add school problem", title: "school", selectionAction: {
-			FirestoreFakeDataSaver.storeSchoolProblem()
+			FirestoreSampleDataSaver.storeSchoolProblem()
 		}))
 		
 		rows.append(normalTextCell(key: "add housing problem", title: "housing", selectionAction: {
-			FirestoreFakeDataSaver.storeHousingProblem()
+			FirestoreSampleDataSaver.storeHousingProblem()
 		}))
 		
 		rows.append(normalTextCell(key: "add opioid problem", title: "opioid", selectionAction: {
-			FirestoreFakeDataSaver.storeOpioidProblem()
+			FirestoreSampleDataSaver.storeOpioidProblem()
 		}))
 		
 		rows.append(normalTextCell(key: "add pollution problem", title: "pollution", selectionAction: {
-			FirestoreFakeDataSaver.storePollutionsProblem()
+			FirestoreSampleDataSaver.storePollutionsProblem()
 		}))
 		
 		return [TableSection(key: "table", rows: rows)]

@@ -1,5 +1,5 @@
 //
-//  FirestoreFakeDataSaver.swift
+//  FirestoreSampleDataSaver.swift
 //  Assemble
 //
 //  Created by Paige Sun on 2018-09-23.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FirestoreFakeDataSaver {
+struct FirestoreSampleDataSaver {
 	static func storeGunProblem() {
 		let problem = Problem(
 			id: nil,
@@ -25,25 +25,7 @@ struct FirestoreFakeDataSaver {
 		
 		saveBorderSolution(problemId: problemId)
 	}
-	
-	private static func saveBorderSolution(problemId: String) {
-		let borderSolution = Solution(
-			id: nil,
-			problemId: problemId,
-			title: "Incraese border security",
-			description: "Gun violence is on the rise in toronto",
-			level: GovernmentLevel.provincial.displayString,
-			bannerImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_bordersecurity_banner.jpg",
-			squareImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_bordersecurity_square.jpg",
-			upvotes: 1274,
-			followers: 281,
-			owner: "Jie Lin",
-			created: "20 days ago")
-		
-		saveSolution(borderSolution, successCompletion: {
-			
-		})
-	}
+
 	
 	static func storeMotoristsProblem() {
 		let problem = Problem(
@@ -150,3 +132,24 @@ struct FirestoreFakeDataSaver {
 	}
 }
 
+extension FirestoreSampleDataSaver {
+	
+	private static func saveBorderSolution(problemId: String) {
+		let borderSolution = Solution(
+			id: nil,
+			problemId: problemId,
+			title: "Incraese border security",
+			description: "Gun violence is on the rise in toronto",
+			level: GovernmentLevel.provincial.displayString,
+			bannerImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_bordersecurity_banner.jpg",
+			squareImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_bordersecurity_square.jpg",
+			upvotes: 1274,
+			followers: 281,
+			owner: "Jie Lin",
+			created: "20 days ago")
+		
+		saveSolution(borderSolution, successCompletion: {
+			
+		})
+	}
+}
