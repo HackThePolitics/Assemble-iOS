@@ -12,6 +12,10 @@
 		9B22793521579125004907DD /* ProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22793421579125004907DD /* ProblemViewController.swift */; };
 		9B22793821579235004907DD /* PolarisButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22793721579235004907DD /* PolarisButton.swift */; };
 		9B22793A2157B167004907DD /* AddSolutionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2279392157B167004907DD /* AddSolutionsViewController.swift */; };
+		9B22793C2157B8C3004907DD /* SolutionSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22793B2157B8C3004907DD /* SolutionSummaryCell.swift */; };
+		9B22793E2157D832004907DD /* SolutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22793D2157D832004907DD /* SolutionViewController.swift */; };
+		9B2279402157D93C004907DD /* AddTalkingPointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22793F2157D93C004907DD /* AddTalkingPointsViewController.swift */; };
+		9B2279422157DB18004907DD /* TalkingPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2279412157DB18004907DD /* TalkingPoints.swift */; };
 		9B44034A21574DEE0006C25E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44034921574DEE0006C25E /* HomeViewController.swift */; };
 		9B44034C2157534E0006C25E /* ControlText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44034B2157534E0006C25E /* ControlText.swift */; };
 		9B44034E215762600006C25E /* TitleHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B44034D215762600006C25E /* TitleHeaderCell.swift */; };
@@ -62,6 +66,10 @@
 		9B22793421579125004907DD /* ProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemViewController.swift; sourceTree = "<group>"; };
 		9B22793721579235004907DD /* PolarisButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarisButton.swift; sourceTree = "<group>"; };
 		9B2279392157B167004907DD /* AddSolutionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSolutionsViewController.swift; sourceTree = "<group>"; };
+		9B22793B2157B8C3004907DD /* SolutionSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolutionSummaryCell.swift; sourceTree = "<group>"; };
+		9B22793D2157D832004907DD /* SolutionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolutionViewController.swift; sourceTree = "<group>"; };
+		9B22793F2157D93C004907DD /* AddTalkingPointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTalkingPointsViewController.swift; sourceTree = "<group>"; };
+		9B2279412157DB18004907DD /* TalkingPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingPoints.swift; sourceTree = "<group>"; };
 		9B44034921574DEE0006C25E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9B44034B2157534E0006C25E /* ControlText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlText.swift; sourceTree = "<group>"; };
 		9B44034D215762600006C25E /* TitleHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderCell.swift; sourceTree = "<group>"; };
@@ -225,6 +233,8 @@
 				9B9D1914215740EA00A5B56E /* SampleViewController.swift */,
 				9B22793421579125004907DD /* ProblemViewController.swift */,
 				9B2279392157B167004907DD /* AddSolutionsViewController.swift */,
+				9B22793D2157D832004907DD /* SolutionViewController.swift */,
+				9B22793F2157D93C004907DD /* AddTalkingPointsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -243,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				9B9D18F72157176100A5B56E /* Restaurant.swift */,
+				9B2279412157DB18004907DD /* TalkingPoints.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -265,6 +276,7 @@
 				9B9D190A2157375C00A5B56E /* SampleNibView.xib */,
 				9B44034D215762600006C25E /* TitleHeaderCell.swift */,
 				9B227932215788A6004907DD /* ImageCell.swift */,
+				9B22793B2157B8C3004907DD /* SolutionSummaryCell.swift */,
 			);
 			path = "FTD Host Cells";
 			sourceTree = "<group>";
@@ -497,6 +509,7 @@
 				9B9D19132157395C00A5B56E /* UIView+FTDConstrainable.swift in Sources */,
 				9B440350215762A30006C25E /* AssembleLayout.swift in Sources */,
 				9B9D18F22157156F00A5B56E /* AssemblyNavigationController.swift in Sources */,
+				9B22793C2157B8C3004907DD /* SolutionSummaryCell.swift in Sources */,
 				9B9D1907215735FB00A5B56E /* Constraints+Activation+Priority.swift in Sources */,
 				9B44035421576A6B0006C25E /* FirestoreFakeDataSaver.swift in Sources */,
 				9B9D1915215740EA00A5B56E /* SampleViewController.swift in Sources */,
@@ -511,6 +524,7 @@
 				9B22793521579125004907DD /* ProblemViewController.swift in Sources */,
 				9B5D74112157463200EC7534 /* ContextLogger.swift in Sources */,
 				9B9D1905215735C400A5B56E /* Constrainable.swift in Sources */,
+				9B22793E2157D832004907DD /* SolutionViewController.swift in Sources */,
 				9B9D18C1215712D100A5B56E /* AppDelegate.swift in Sources */,
 				9B44034E215762600006C25E /* TitleHeaderCell.swift in Sources */,
 				9B44034C2157534E0006C25E /* ControlText.swift in Sources */,
@@ -518,10 +532,12 @@
 				9B9D19002157355300A5B56E /* FTDCellFactory.swift in Sources */,
 				9B440352215768520006C25E /* AddProblemDataViewController.swift in Sources */,
 				9B9D18FB215717C300A5B56E /* LocalCollection.swift in Sources */,
+				9B2279422157DB18004907DD /* TalkingPoints.swift in Sources */,
 				9B9D18F52157162300A5B56E /* FirestoreManager.swift in Sources */,
 				9B9D18F0215714D200A5B56E /* UIColor+Extension.swift in Sources */,
 				9B9D18FD2157254C00A5B56E /* FirestoreManagerSample+TestSaves.swift in Sources */,
 				9B9D19022157357300A5B56E /* SpacerCell.swift in Sources */,
+				9B2279402157D93C004907DD /* AddTalkingPointsViewController.swift in Sources */,
 				9B22793821579235004907DD /* PolarisButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

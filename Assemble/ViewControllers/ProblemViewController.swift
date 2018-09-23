@@ -22,7 +22,10 @@ class ProblemViewController: UIViewController {
 		
 		super.init(nibName: nil, bundle: nil)
 		
-		view.backgroundColor = .white
+		title = "Problem"
+		view.backgroundColor = .backgroundGray
+		tableView.backgroundColor = .clear
+
 		let rightButton = UIBarButtonItem(title: "   ", style: .done, target: self, action: #selector(rightButtonTapped))
 		navigationItem.rightBarButtonItem = rightButton
 		
@@ -60,12 +63,42 @@ class ProblemViewController: UIViewController {
 		let titleCell = FTDCellFactory.headerCell(key: "titleCell", title: problem.title)
 		rows.append(titleCell)
 		
-		let topSolutionsHeaderCell = FTDCellFactory.headerCell(key: "top solutions", title: "TOP SOLUTIONS")
-		rows.append(topSolutionsHeaderCell)
+		if solutionsCollection.items.count > 0 {
+			let topSolutionsHeaderCell = FTDCellFactory.headerCell(key: "top solutions", title: "TOP SOLUTIONS")
+			rows.append(topSolutionsHeaderCell)
+		}
 
 		for solution in solutionsCollection.items {
-			let headerCell = FTDCellFactory.headerCell(key: "header \(solution.id ?? "")", title: solution.title)
-			rows.append(headerCell)
+			var subtitle = [ControlText]()
+			subtitle.append(ControlText(text: "\n\(solution.followers) Followers",
+											font: .boldSystemFont(ofSize: 16),
+											color: .darkGray))
+
+//			subtitle.append(ControlText(text: "\n\(solution.description)",
+//										font: .systemFont(ofSize: 9),
+//										color: .darkGray))
+			
+			subtitle.append(ControlText(text: "\nOwner: \(solution.owner)",
+										font: .systemFont(ofSize: 14),
+										color: .darkGray))
+			
+			subtitle.append(ControlText(text: "\nCreated: \(solution.created)",
+				font: UIFont.systemFont(ofSize: 14),
+				color: .darkGray))
+
+			let cell = SolutionSummaryCell(
+				key: "solution cell \(solution.id ?? "")",
+				style: FTDCellFactory.clearCellStyle(),
+				actions: CellActions(selectionAction: { [weak self] _ in
+					let vc = SolutionViewController(solution: solution)
+					self?.navigationController?.show(vc, sender: nil)
+					return .deselected
+				}),
+				state: SolutionSummaryState(title: solution.title,
+											subtitleControlText: subtitle,
+											govLevelColor: solution.level.displayColor,
+											govLevelText: solution.level.displayString))
+			rows.append(cell)
 		}
 		
 		return [TableSection(key: "table", rows: rows)]

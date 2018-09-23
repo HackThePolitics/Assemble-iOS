@@ -14,7 +14,7 @@ struct Solution {
 	let problemId: String
 	let title: String
 	let description: String
-	let level: String
+	let level: GovernmentLevel
 	let bannerImageUrl: String
 	let squareImageUrl: String
 	
@@ -28,7 +28,7 @@ struct Solution {
 			"problemId": problemId,
 			"title": title,
 			"description": description,
-			"level": level,
+			"level": level.displayString,
 			"bannerImageUrl": bannerImageUrl,
 			"squareImageUrl": squareImageUrl,
 			
@@ -45,7 +45,8 @@ extension Solution: DocumentSerializable {
 		guard let title = dictionary["title"] as? String,
 			let problemId = dictionary["problemId"] as? String,
 			let description = dictionary["description"] as? String,
-			let level = dictionary["level"] as? String,
+			let levelString = dictionary["level"] as? String,
+			let level = GovernmentLevel(from: levelString),
 			let bannerImageUrl = dictionary["bannerImageUrl"] as? String,
 			let squareImageUrl = dictionary["squareImageUrl"] as? String,
 

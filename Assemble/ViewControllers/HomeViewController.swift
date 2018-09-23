@@ -91,7 +91,7 @@ class HomeViewController: UIViewController {
 		
 		rows.append(headerCell(key: "riding header", title: "YOUR RIDING: TORONTO – DANFORTH"))
 
-		rows.append(ImageHeaderCell(key: "federalRep", state: ImageHeaderState(image: #imageLiteral(resourceName: "headshots"))))
+		rows.append(ImageHeaderCell(key: "federalRep", state: ImageHeaderState(image: #imageLiteral(resourceName: "group"))))
 //		rows.append(ImageHeaderCell(key: "proRep", state: ImageHeaderState(image: #imageLiteral(resourceName: "headshotprovincial"))))
 //		rows.append(ImageHeaderCell(key: "cityRep", state: ImageHeaderState(image: #imageLiteral(resourceName: "headshopmunicipal"))))
 		

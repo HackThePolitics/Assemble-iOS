@@ -28,7 +28,9 @@ class ImageHeaderView: UIView {
 		imageView.contentMode = .scaleAspectFit
 		addSubview(imageView)
 		imageView.constrainEdgesToFTDView(self)
-		imageView.constrainHeight(300)
+//		imageView.constrainHeight(300)
+		
+	
 	}
 }
 

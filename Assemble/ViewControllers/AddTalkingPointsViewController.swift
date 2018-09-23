@@ -1,23 +1,22 @@
 //
-//  AddSolutionsViewController.swift
+//  AddTalkingPointsViewController.swift
 //  Assemble
 //
 //  Created by Paige Sun on 2018-09-23.
 //  Copyright © 2018 Paige Sun. All rights reserved.
 //
 
-import Foundation
 import SwiftyTables
 
-class AddSolutionsDataViewController: UIViewController {
+class AddTalkingPointsDataViewController: UIViewController {
 	
 	private let functionalTableData = FunctionalTableData()
 	private let tableView = UITableView()
 	
-	private let problemId: String
+	private let solutionId: String
 	
-	init(problemId: String) {
-		self.problemId = problemId
+	init(solutionId: String) {
+		self.solutionId = solutionId
 		super.init(nibName: nil, bundle: nil)
 		
 		title = "Store Data"
@@ -38,24 +37,29 @@ class AddSolutionsDataViewController: UIViewController {
 	private func tableSections() -> [TableSection] {
 		var rows = [CellConfigType]()
 		
-		rows.append(normalTextCell(key: "border", title: "border", selectionAction: { [weak self] in
+		rows.append(normalTextCell(key: "bring", title: "bring", selectionAction: { [weak self] in
 			guard let strongSelf = self else { return }
-			FirestoreSolutionSampleDataSaver.saveBorderSolution(problemId: strongSelf.problemId)
+			FirestoreTalkingPointSampleDataSaver.dontBringGuns(solutionId: strongSelf.solutionId)
 		}))
-		
-		rows.append(normalTextCell(key: "gun", title: "gun", selectionAction: { [weak self] in
+
+		rows.append(normalTextCell(key: "services", title: "services", selectionAction: { [weak self] in
 			guard let strongSelf = self else { return }
-			FirestoreSolutionSampleDataSaver.saveIllegalGunSolution(problemId: strongSelf.problemId)
+			FirestoreTalkingPointSampleDataSaver.services(solutionId: strongSelf.solutionId)
 		}))
-		
-		rows.append(normalTextCell(key: "employment", title: "employment", selectionAction: { [weak self] in
+
+		rows.append(normalTextCell(key: "crime", title: "crime", selectionAction: { [weak self] in
 			guard let strongSelf = self else { return }
-			FirestoreSolutionSampleDataSaver.saveEmploymentSolution(problemId: strongSelf.problemId)
+			FirestoreTalkingPointSampleDataSaver.crime(solutionId: strongSelf.solutionId)
 		}))
-		
-		rows.append(normalTextCell(key: "after school", title: "after school program", selectionAction: { [weak self] in
+
+		rows.append(normalTextCell(key: "court", title: "court", selectionAction: { [weak self] in
 			guard let strongSelf = self else { return }
-			FirestoreSolutionSampleDataSaver.saveAfterSchoolSolution(problemId: strongSelf.problemId)
+			FirestoreTalkingPointSampleDataSaver.court(solutionId: strongSelf.solutionId)
+		}))
+
+		rows.append(normalTextCell(key: "government", title: "government", selectionAction: { [weak self] in
+			guard let strongSelf = self else { return }
+			FirestoreTalkingPointSampleDataSaver.government(solutionId: strongSelf.solutionId)
 		}))
 		
 		return [TableSection(key: "table", rows: rows)]

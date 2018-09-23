@@ -130,7 +130,7 @@ struct FirestoreSolutionSampleDataSaver {
 			problemId: problemId,
 			title: "Increase border security to make sure illegal guns do not make it into Canada",
 			description: "Border security will prevent anyone with a handgun from entering the country illegally",
-			level: GovernmentLevel.provincial.displayString,
+			level: GovernmentLevel.federal,
 			bannerImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_bordersecurity_banner.jpg",
 			squareImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_bordersecurity_square.jpg",
 			upvotes: 1274,
@@ -149,7 +149,7 @@ struct FirestoreSolutionSampleDataSaver {
 			problemId: problemId,
 			title: "Make hand guns illegal and put anyone with a gun in jail",
 			description: "We are Canada, we should have hand guns at all.",
-			level: GovernmentLevel.provincial.displayString,
+			level: GovernmentLevel.federal,
 			bannerImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_gunsillegal_banner.jpg",
 			squareImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_gunsillegal_square.jpg",
 			upvotes: 22,
@@ -167,8 +167,8 @@ struct FirestoreSolutionSampleDataSaver {
 			id: nil,
 			problemId: problemId,
 			title: "Create employment opportunities for people in gangs or at risk of joining a gang so they do not turn to guns and crime",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
-			level: GovernmentLevel.provincial.displayString,
+			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+			level: GovernmentLevel.provincial,
 			bannerImageUrl: "",
 			squareImageUrl: "",
 			upvotes: 2324,
@@ -186,8 +186,8 @@ struct FirestoreSolutionSampleDataSaver {
 			id: nil,
 			problemId: problemId,
 			title: "Free before / after school programs for any kid in a priority neighbourhood who is at risk of joining a gang",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-			level: GovernmentLevel.provincial.displayString,
+			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+			level: GovernmentLevel.municipal,
 			bannerImageUrl: "",
 			squareImageUrl: "",
 			upvotes: 23432,
@@ -209,6 +209,100 @@ struct FirestoreSolutionSampleDataSaver {
 			}
 			
 			ContextLogger.logSuccess("Saved \(solution.title)!")
+			successCompletion?()
+		})
+	}
+}
+
+struct FirestoreTalkingPointSampleDataSaver {
+	
+	static func dontBringGuns(solutionId: String) {
+		let talkingPoint = TalkingPoint(id: nil,
+										solutionId: solutionId,
+										  isPro: true,
+										  text: "guns can’t be sold or brought into canada so they should not be so many of any at all on our streets",
+										  upvotes: 122,
+										  profileName: "Betty Zhang",
+										  profileImageUrl: "https://media.licdn.com/dms/image/C4D03AQEhR8PLnpJJRA/profile-displayphoto-shrink_800_800/0?e=1543449600&v=beta&t=xUc8tRqY9PoAony9adUnREnx5OmhmhunassCtnGtE10")
+		saveTalkingPoint(talkingPoint, successCompletion: {
+			
+		})
+	}
+	
+	static func services(solutionId: String) {
+		let talkingPoint = TalkingPoint(id: nil,
+										solutionId: solutionId,
+										isPro: true,
+										text: "We need a place to provide the services offered by the city. ",
+										upvotes: 2983,
+										profileName: "Betty Zhang",
+										profileImageUrl: "https://media.licdn.com/dms/image/C4D03AQEhR8PLnpJJRA/profile-displayphoto-shrink_800_800/0?e=1543449600&v=beta&t=xUc8tRqY9PoAony9adUnREnx5OmhmhunassCtnGtE10")
+		saveTalkingPoint(talkingPoint, successCompletion: {
+			
+		})
+	}
+	
+	static func crime(solutionId: String) {
+		let talkingPoint = TalkingPoint(id: nil,
+										solutionId: solutionId,
+										isPro: true,
+										text: "We need a place to provide the services offered by the city. ",
+										upvotes: 2342,
+										profileName: "Betty Zhang",
+										profileImageUrl: "https://media.licdn.com/dms/image/C4D03AQEhR8PLnpJJRA/profile-displayphoto-shrink_800_800/0?e=1543449600&v=beta&t=xUc8tRqY9PoAony9adUnREnx5OmhmhunassCtnGtE10")
+		saveTalkingPoint(talkingPoint, successCompletion: {
+			
+		})
+	}
+	
+	static func court(solutionId: String) {
+		let talkingPoint = TalkingPoint(id: nil,
+										solutionId: solutionId,
+										isPro: false,
+										text: "more police and court time needed to arrest and convict people with guns and this is expensive",
+										upvotes: 232,
+										profileName: "James Lee",
+										profileImageUrl: "https://media.licdn.com/dms/image/C4D03AQEhR8PLnpJJRA/profile-displayphoto-shrink_800_800/0?e=1543449600&v=beta&t=xUc8tRqY9PoAony9adUnREnx5OmhmhunassCtnGtE10")
+		saveTalkingPoint(talkingPoint, successCompletion: {
+			
+		})
+	}
+	
+	static func gangs(solutionId: String) {
+		let talkingPoint = TalkingPoint(id: nil,
+										solutionId: solutionId,
+										isPro: false,
+										text: "makings guns illegal is not really solving for why people join gangs (i.e. they need employment and security in their own lives)",
+										upvotes: 922,
+										profileName: "James Lee",
+										profileImageUrl: "https://media.licdn.com/dms/image/C4D03AQEhR8PLnpJJRA/profile-displayphoto-shrink_800_800/0?e=1543449600&v=beta&t=xUc8tRqY9PoAony9adUnREnx5OmhmhunassCtnGtE10")
+		saveTalkingPoint(talkingPoint, successCompletion: {
+			
+		})
+	}
+	
+	static func government(solutionId: String) {
+		let talkingPoint = TalkingPoint(id: nil,
+										solutionId: solutionId,
+										isPro: false,
+										text: "making guns illegal means changing the laws which not every level of government would agree on",
+										upvotes: 2232,
+										profileName: "Alfie Tham",
+										profileImageUrl: "https://media.licdn.com/dms/image/C4D03AQEhR8PLnpJJRA/profile-displayphoto-shrink_800_800/0?e=1543449600&v=beta&t=xUc8tRqY9PoAony9adUnREnx5OmhmhunassCtnGtE10")
+		saveTalkingPoint(talkingPoint, successCompletion: {
+			
+		})
+	}
+	
+	private static func saveTalkingPoint(_ talkingPoint: TalkingPoint,
+									 successCompletion: (() -> Void)? = nil) {
+		let collection = FirestoreManager.firestoreDB().collection("talking-points")
+		collection.addDocument(data: talkingPoint.dictionary, completion: { error in
+			if let error = error {
+				ContextLogger.logServerError("Couldn't add document with name \(talkingPoint.text), \(error)")
+			}
+			
+			ContextLogger.logSuccess("Saved \(talkingPoint.text)!")
 			successCompletion?()
 		})
 	}

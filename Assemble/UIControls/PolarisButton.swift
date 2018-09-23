@@ -14,6 +14,8 @@ enum PolarisButtonType {
 
 class PolarisButton: UIButton {
 	
+	private let label = UILabel()
+	
 	var secondaryColor: UIColor = .primaryPurple {
 		didSet {
 			updateColors()
@@ -25,10 +27,13 @@ class PolarisButton: UIButton {
 			updateColors()
 		}
 	}
-
+	
 	init() {
 		super.init(frame: .zero)
 
+		addSubview(label)
+		label.constrainEdges(to: self, insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+		
 		layer.cornerRadius = 8
 		clipsToBounds = true
 
@@ -40,17 +45,22 @@ class PolarisButton: UIButton {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	override func setTitle(_ title: String?, for state: UIControl.State) {
+		label.text = title
+	}
+	
 	private func updateColors() {
 		switch type {
 		case .primary:
 			backgroundColor = .primaryPurple
-			setTitleColor(.white, for: .normal)
+			label.textColor = .white
 			
 			layer.borderWidth = 0
 			
 		case .secondary:
 			backgroundColor = .white
-			setTitleColor(secondaryColor, for: .normal)
+			
+			label.textColor = secondaryColor
 			
 			layer.borderColor = secondaryColor.cgColor
 			layer.borderWidth = 2

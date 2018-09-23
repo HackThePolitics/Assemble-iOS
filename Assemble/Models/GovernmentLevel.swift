@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum GovernmentLevel {
 	case federal, provincial, municipal
@@ -32,6 +33,20 @@ enum GovernmentLevel {
 			return "Provincial"
 		case .municipal:
 			return "Municipal"
+		}
+	}
+	
+	var displayColor: UIColor {
+		switch self {
+		case .federal:
+			return .federalOrange
+			
+		case .provincial:
+			return .primaryPurple
+
+		case .municipal:
+			return .municipalRed
+			
 		}
 	}
 }
