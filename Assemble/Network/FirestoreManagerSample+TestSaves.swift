@@ -10,17 +10,18 @@ import Foundation
 
 struct FirestoreManagerSample {
 	
-	static func saveRestaurant() {
-		let collection = FirestoreManager.firestoreDB().collection("testrestaurants")
-		let restaurant = Restaurant(
-			name: "some name",
-			category: "home category",
-			city: "city ",
-			price: 123,
-			ratingCount: 0,
-			averageRating: 0
-		)
-		
-		collection.addDocument(data: restaurant.dictionary)
-	}
+//	static func saveRestaurant() {
+//		let collection = FirestoreManager.firestoreDB().collection("testrestaurants")
+//		let restaurant = Restaurant(
+//			id: nil,
+//			name: "some name",
+//			category: "home category",
+//			city: "city ",
+//			price: 123,
+//			ratingCount: 0,
+//			averageRating: 0
+//		)
+//
+//		collection.addDocument(data: restaurant.dictionary)
+//	}
 }
