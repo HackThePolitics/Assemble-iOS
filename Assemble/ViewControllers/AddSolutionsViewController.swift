@@ -1,19 +1,23 @@
 //
-//  AddDataViewController.swift
+//  AddSolutionsViewController.swift
 //  Assemble
 //
 //  Created by Paige Sun on 2018-09-23.
 //  Copyright © 2018 Paige Sun. All rights reserved.
 //
 
+import Foundation
 import SwiftyTables
 
-class AddDataViewController: UIViewController {
+class AddSolutionsDataViewController: UIViewController {
 	
 	private let functionalTableData = FunctionalTableData()
 	private let tableView = UITableView()
 	
-	init() {
+	private let problemId: String
+	
+	init(problemId: String) {
+		self.problemId = problemId
 		super.init(nibName: nil, bundle: nil)
 		
 		title = "Store Data"
@@ -34,33 +38,24 @@ class AddDataViewController: UIViewController {
 	private func tableSections() -> [TableSection] {
 		var rows = [CellConfigType]()
 		
-		rows.append(normalTextCell(key: "add gun problem", title: "gun", selectionAction: {
-			print("***********")
-			FirestoreSampleDataSaver.storeGunProblem()
+		rows.append(normalTextCell(key: "border", title: "border", selectionAction: { [weak self] in
+			guard let strongSelf = self else { return }
+			FirestoreSolutionSampleDataSaver.saveBorderSolution(problemId: strongSelf.problemId)
 		}))
 		
-		rows.append(normalTextCell(key: "add motorists problem", title: "motorists", selectionAction: {
-			FirestoreSampleDataSaver.storeMotoristsProblem()
+		rows.append(normalTextCell(key: "gun", title: "gun", selectionAction: { [weak self] in
+			guard let strongSelf = self else { return }
+			FirestoreSolutionSampleDataSaver.saveIllegalGunSolution(problemId: strongSelf.problemId)
 		}))
 		
-		rows.append(normalTextCell(key: "store homeless problem", title: "homelessness", selectionAction: {
-			FirestoreSampleDataSaver.storeHomelessProblem()
+		rows.append(normalTextCell(key: "employment", title: "employment", selectionAction: { [weak self] in
+			guard let strongSelf = self else { return }
+			FirestoreSolutionSampleDataSaver.saveEmploymentSolution(problemId: strongSelf.problemId)
 		}))
 		
-		rows.append(normalTextCell(key: "add school problem", title: "school", selectionAction: {
-			FirestoreSampleDataSaver.storeSchoolProblem()
-		}))
-		
-		rows.append(normalTextCell(key: "add housing problem", title: "housing", selectionAction: {
-			FirestoreSampleDataSaver.storeHousingProblem()
-		}))
-		
-		rows.append(normalTextCell(key: "add opioid problem", title: "opioid", selectionAction: {
-			FirestoreSampleDataSaver.storeOpioidProblem()
-		}))
-		
-		rows.append(normalTextCell(key: "add pollution problem", title: "pollution", selectionAction: {
-			FirestoreSampleDataSaver.storePollutionsProblem()
+		rows.append(normalTextCell(key: "after school", title: "after school program", selectionAction: { [weak self] in
+			guard let strongSelf = self else { return }
+			FirestoreSolutionSampleDataSaver.saveBorderSolution(problemId: strongSelf.problemId)
 		}))
 		
 		return [TableSection(key: "table", rows: rows)]

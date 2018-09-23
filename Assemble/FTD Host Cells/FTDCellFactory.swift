@@ -19,4 +19,11 @@ struct FTDCellFactory {
 			style: clearCellStyle(),
 			state: SpacerState(height: height))
 	}
+	
+	static func headerCell(key: String, title: String) -> CellConfigType {
+		return TitleHeaderCell(
+			key: key,
+			style: FTDCellFactory.clearCellStyle(),
+			state: TitleHeaderState(title: title, titleColor: .black, font: UIFont.boldSystemFont(ofSize: 24)))
+	}
 }

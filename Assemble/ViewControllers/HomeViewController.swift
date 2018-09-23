@@ -23,8 +23,6 @@ class HomeViewController: UIViewController {
 		title = "Assemble"
 		tableView.backgroundColor = .backgroundGray
 		
-		FirestoreManager.firestoreDB().collection("problems")
-		
 		problemCollection = LocalCollection<Problem>(
 			query: FirestoreManager.firestoreDB().collection("problems"),
 			updateHandler: { [weak self] changed in
@@ -68,7 +66,7 @@ class HomeViewController: UIViewController {
 	}
 	
 	@objc private func rightButtonTapped() {
-		let vc = AddDataViewController()
+		let vc = AddProblemDataViewController()
 		navigationController?.show(vc, sender: nil)
 	}
 	
@@ -119,6 +117,16 @@ class HomeViewController: UIViewController {
 		let cell = HomeProblemCell(
 			key: "key\(probId)",
 			style: FTDCellFactory.clearCellStyle(),
+			actions: CellActions(selectionAction: { [weak self] _ in
+				
+				guard let strongSelf = self else {
+					return .deselected
+				}
+				
+				let vc = ProblemViewController(problem: problem)
+				strongSelf.navigationController?.show(vc, sender: nil)
+				return .deselected
+			}),
 			state: state)
 		rows.append(cell)
 		

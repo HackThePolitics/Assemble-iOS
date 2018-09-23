@@ -23,9 +23,12 @@ struct FirestoreSampleDataSaver {
 		let problemId = saveProblem(problem, successCompletion: {
 		})
 		
-		saveBorderSolution(problemId: problemId)
+		
+		FirestoreSolutionSampleDataSaver.saveBorderSolution(problemId: problemId)
+		FirestoreSolutionSampleDataSaver.saveIllegalGunSolution(problemId: problemId)
+		FirestoreSolutionSampleDataSaver.saveEmploymentSolution(problemId: problemId)
+		FirestoreSolutionSampleDataSaver.saveAfterSchoolSolution(problemId: problemId)
 	}
-
 	
 	static func storeMotoristsProblem() {
 		let problem = Problem(
@@ -117,6 +120,85 @@ struct FirestoreSampleDataSaver {
 			successCompletion?()
 		}).documentID
 	}
+}
+
+struct FirestoreSolutionSampleDataSaver {
+	
+	static func saveBorderSolution(problemId: String) {
+		let borderSolution = Solution(
+			id: nil,
+			problemId: problemId,
+			title: "Increase border security to make sure illegal guns do not make it into Canada",
+			description: "Border security will prevent anyone with a handgun from entering the country illegally",
+			level: GovernmentLevel.provincial.displayString,
+			bannerImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_bordersecurity_banner.jpg",
+			squareImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_bordersecurity_square.jpg",
+			upvotes: 1274,
+			followers: 281,
+			owner: "Paige Sun",
+			created: "12 days ago")
+		
+		saveSolution(borderSolution, successCompletion: {
+			
+		})
+	}
+	
+	static func saveIllegalGunSolution(problemId: String) {
+		let borderSolution = Solution(
+			id: nil,
+			problemId: problemId,
+			title: "Make hand guns illegal and put anyone with a gun in jail",
+			description: "We are Canada, we should have hand guns at all.",
+			level: GovernmentLevel.provincial.displayString,
+			bannerImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_gunsillegal_banner.jpg",
+			squareImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_gunsillegal_square.jpg",
+			upvotes: 22,
+			followers: 12,
+			owner: "Alfie Tham",
+			created: "20 days ago")
+		
+		saveSolution(borderSolution, successCompletion: {
+			
+		})
+	}
+	
+	static func saveEmploymentSolution(problemId: String) {
+		let borderSolution = Solution(
+			id: nil,
+			problemId: problemId,
+			title: "Create employment opportunities for people in gangs or at risk of joining a gang so they do not turn to guns and crime",
+			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+			level: GovernmentLevel.provincial.displayString,
+			bannerImageUrl: "",
+			squareImageUrl: "",
+			upvotes: 2324,
+			followers: 1232,
+			owner: "Mathew Weeks",
+			created: "23 days ago")
+		
+		saveSolution(borderSolution, successCompletion: {
+			
+		})
+	}
+	
+	static func saveAfterSchoolSolution(problemId: String) {
+		let borderSolution = Solution(
+			id: nil,
+			problemId: problemId,
+			title: "Free before / after school programs for any kid in a priority neighbourhood who is at risk of joining a gang",
+			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+			level: GovernmentLevel.provincial.displayString,
+			bannerImageUrl: "",
+			squareImageUrl: "",
+			upvotes: 23432,
+			followers: 3889,
+			owner: "Paige Sun",
+			created: "4 months ago")
+		
+		saveSolution(borderSolution, successCompletion: {
+			
+		})
+	}
 	
 	private static func saveSolution(_ solution: Solution,
 									 successCompletion: (() -> Void)? = nil) {
@@ -128,28 +210,6 @@ struct FirestoreSampleDataSaver {
 			
 			ContextLogger.logSuccess("Saved \(solution.title)!")
 			successCompletion?()
-		})
-	}
-}
-
-extension FirestoreSampleDataSaver {
-	
-	private static func saveBorderSolution(problemId: String) {
-		let borderSolution = Solution(
-			id: nil,
-			problemId: problemId,
-			title: "Incraese border security",
-			description: "Gun violence is on the rise in toronto",
-			level: GovernmentLevel.provincial.displayString,
-			bannerImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_bordersecurity_banner.jpg",
-			squareImageUrl: "https://s3.amazonaws.com/assemble-assets/Solution_bordersecurity_square.jpg",
-			upvotes: 1274,
-			followers: 281,
-			owner: "Jie Lin",
-			created: "20 days ago")
-		
-		saveSolution(borderSolution, successCompletion: {
-			
 		})
 	}
 }
